@@ -1,7 +1,5 @@
 package testapi;
 
-import java.sql.Date;
-
 public class Parking {
 	private String parkingCode;
 	private String parkingName;
