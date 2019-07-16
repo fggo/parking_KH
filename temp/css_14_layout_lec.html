@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>레이아웃</title>
+    <style>
+        div{
+            height:100px;
+            width:100px;
+            border:1px solid red;
+        }
+        .add{
+            padding:20px;
+        }
+        .relative{
+            height:300px;
+            width:30%;
+            font-size:20px;
+        }
+        .emtest{
+            height:300px;
+            width:5em;
+            font-size: 1.5em;
+        }
+        .inline{
+            display:inline;
+            width:1000px;
+        }
+        .block{
+            display:block;
+            width:500px;
+            height:500px;
+        }
+        .lineblock{
+            display:inline-block;
+            width:300px;
+            height:200px;
+            border:1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <div class="add"></div>
+    <div class="relative"></div>
+    <div class="relative">relative
+        <div class="emtest">emtest</div>
+    </div>
+    <div class="inline">inline1</div>
+    <div class="inline">inline2</div>
+    <span class="block">난 span1</span><span>난 span2</span>
+    <span class="lineblock">여기에 선언했어!!</span>
+    <span>이거는 어디에 붙니??</span><br/>
+    <img src="media/icon.png" width=100px height=100px/>
+    <p class="inline">이작품은 무관씨가 스타업을 할때 사진입니다.</p>
+
+</body>
+</html>

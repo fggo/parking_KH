@@ -1,0 +1,682 @@
+
+
+
+
+
+
+
+
+
+
+
+
+화면설계 시험
+GUI
+	user interface
+UI 요구사항
+	목적 달성위해 요구사항 반영
+	
+고객의 요구사항 바탕으로 명세서 작성
+	서비스 제약사항 파악
+	쉽고 저렴한 방법으로 모색
+
+UI 설계문서
+	커뮤니케이션위한 문서
+
+website 설계: 사용성 높여야함.
+	요구사항 보다 더 상세히 설계
+
+요구사항 데이터 처리위치
+
+UI 설계시 tag element 올려놓음
+	디자이너와 구현 가능성 조율
+
+화면설계시 문서 작성: 
+	- prototype : 미리 임시로 구현되게
+	- wireframe : 화면 layout 설계
+	- mockup : 실물과 흡사한 형태 만들어 놓음
+	- storymode : wireframe, description 포함
+
+사용성
+
+usecase 다이어그램 actor들이 행동을 할때, 명시. 공식화 해서 그려놓음.
+	교수 학생 사서
+	로그인을 먼저 함.
+
+로그인 관련 기능은 시스템을 이용하기 위해 log in log out 기능
+개인 정보 관리 하려면, 자신 싱상정보 관리
+조회 및 수정 할 수 있어야함.
+소장자료 검색 기능. (keyword로 검색가능), 구매사항 조회.
+대출 신청 기능.
+학생 교수: 대출 신청한 도서를 도서관에서 자동 대출.
+구매신청 내역을 사서라는 actor가 관리. 주문시스템으로 신청.
+
+UI 설계서 작성 목적: 커뮤니케이션
+
+UI 설계문서에 포함되어야 할 사항
+1.제목 version project
+2. wireframe : layout 설계
+3. storymode : 디자이너와 개발자 최종 산출물
+4. workflow
+5. iaa 메뉴구성도
+
+wireframe prototype storymode!!!
+
+UI설계시 고려해야 할 사항
+	- 동일한 작업
+	- 컨텐츠
+	- 모든 기획은 사용자 입장
+	- 화면설계와 문서작성 직관적으로 작성해야.
+
+
+7.17 SEMI CONFIRMED BY LECTURER
+kakao google tmap
+	- api navigation 기능 여부
+
+https://www.opentutorials.org/course/1
+https://flukeout.github.io/
+
+- 자기 위치정보 가져오는 Geolocation API
+- 전국주차장 api보면 남은 자릿수 확인 X
+- 결제시스템 API : API JSON 가져와서 코딩예제
+
+
+HTML
+https://www.w3schools.com/
+
+SEMI
+https://www.tutorialspoint.com/compile_java_online.php
+https://github.com/yashchauhan28/Online-java-compiler
+https://github.com/jitu167/Online-Java-Compiler
+https://kldp.org/node/119228
+https://github.com/liaoyu/rcapp
+
+
+1. SNS
+    facebook/twitter/instagram/ 등 비슷하게 만들기
+    
+2. 실시간 헤드라인 뉴스
+    https://hckrnews.com/
+    https://news.hoxly.com/
+    - 유저가 (제목 + 뉴스링크) 게시글 등록
+    - 웹크롤링: 웹에서 데이터를 가져옴. keyword 기준으로 뉴스 리스트를 가져옴
+    - 유저 추천수 및 댓글 기능.
+
+3. 실시간 가격비교 사이트
+    http://www.danawa.com/
+    - 웹크롤링으로 가격정보 웹에서 추출
+
+4. 웹코딩
+    https://leetcode.com/problems/two-sum/
+    - 웹상에서 코딩
+    - 자동완성 기능 / syntax 색깔넣기
+    - 프로그래밍 챌린지 quiz 및 보상 시스템
+
+웹코딩, 여행, 시뮬레이션 등 주제 3가지. 디자이너가 아니기때문에 기능적인부분 집중. 
+회사에 제안시 주제를 선택한이유, 기능이 유용한지에 대해 간략하게 준비
+문준석 wnstjr1236@naver.com
+문은철 jinparang8877@gmail.com
+최호준 94hojun@gmail.com
+
+
+- SEMI PROJECT 모델링 프로세스
+    기능 찾기 (영화예매 기능, 음식주문 기능 등)
+    필드 찾기 (e.g. 티켓가격, 할인율, 결제일)
+    테이블 만들기 (비슷한 기능, 필드를 묶어 테이블 정의)
+
+---------------------------------------------
+
+의존성 주입
+MainView()
+EmployeeController()
+	StackOverFlowError
+
+ipconfig 
+ipv4 192.168.20.238
+ipv4 192.168.20.2
+
+Connection: 애플리케이션에서 한개만 존재 singleton
+
+JDBC
+    Connection Statement Transaction -> model.service
+        (제대로 update 됐는지 validation)
+    각테이블 마다 tablenameDao. dao에서 service.getConnection불러서  사용
+        Service에서 Common 생성
+        Common에 Connection 정보(public static Connection getConnection())를 
+        넣어서 이곳에서 수정 ->전체 DAO에 적용
+
+    - JRE System Libraries 에 추가
+        C:\Program Files\Java\jdk1.8.0_144\jre\lib\ext
+        ojdbc6.jar을 넣고 eclipse restart
+        -> build path 추가하지 않고도 jdbc 사용 가능
+        추가안될 경우 Preferences -> Java -> Installed JREs 경로 맞춰야함
+        
+    - Refenced Library에 추가
+        Build Path -> configure build path -> Add External Jars (다운로드한 ojdbc6.jar)
+            -> Reference Library
+	
+    프로젝트 단위별로 ojdbc6 등 external JARs추가
+	
+    Preferences -> General - Editor - Text Editors - Spelling -> Encoding(UTF-8)
+    Perferences -> General - Workspace -> Encoding(UTF-8)
+    Perferences -> JSON - JSON FILE (ISO 10646 UTF_8)
+    Perferences -> Web - CSS HTML JSP (ISO 10646 UTF_8)
+
+    executeQuery (select)
+    executeUpdate (DML)
+
+    int result = stmt.executeQuery(query);
+    // 몇개 행 업데이트 됐는지 return
+
+    CLI text 방식으로 DB에 뿌림.
+
+    MVC
+
+    controller ->
+    view -
+
+    Bean 객체
+
+    DAO(Database Access Object)
+
+
+
+
+
+--DB 시험 7.2
+CREATE TABLE table_name
+    var_1 data_type_1,
+    var_2 data_type_2,
+    ...
+    var_n datatype_n;
+);
+
+CONSTRAINT 제약조건 수정 삭제 추가
+
+JOIN (INNER / LEFT OUTER / RIGHT OUTER)
+
+DDL(Data Definition Language)
+	CREATE ALTER DROP
+    TRUNCATE
+    COMMENT
+    RENAME
+
+DML(Data Manipulation Language)
+	SELECT INSERT UPDATE DELETE
+
+DCL(Data Control Language)
+	GRANT REVOKE
+
+TCL(transaction Control Language)
+    COMMIT ROLLBACK
+    - TRANSACTION : 한개의 작업단위. 작업이 끝나지 않으면 멈춰 있음
+      각각 트랜젝션이 별개
+
+INSERT INTO table_name VALUES(... ... );
+INSERT INTO table_name(col_1, ... , col_n) VALUES(val_1, ... , val_n);
+
+INDEX
+	fast search
+	자동생성 PK 혹은 UNIQUE KEY 일때
+	인덱스가 지정된 대로 데이터 찾음
+	컬럼이 자주 수정/삭제 되면, 인덱스가
+	인덱스 걸려있는 컬럼값 변경할 때 마다, rebuild
+	해야 하므로, 비효율적.
+
+서브쿼리
+	동등비교 IN ()
+	ANY ALL ()
+	EXISTS 상관 서브쿼리
+	
+PROCEDURE (CREATE OR REPLACE)
+    A procedure is a group of PL/SQL statements that you can call by name
+    Stored procedures offer advantages in the areas of development, integrity, 
+        security, performance, and memory allocation.
+VIEW
+	보안 우수성
+	필요한 데이터만 골라 볼 수 있음
+	VIEW 입력 수정 삭제를 통한 테이블 데이터 변경 가능
+	
+	GRANT CREATE VIEW TO user_name;
+	
+DATA TYPE
+	INT, DATE, NVARCHAR2
+
+
+
+
+--DB시험(책 DDL 파트, p112, p133)
+standard 기본기능. 유료but 개인용 앱개발 사용 가능
+enterprise 대규모 대용량. 기업용 유료
+express 교육용 데모 1GB이상 불가능
+
+--기본적으로 제공하는 테이블: dictionary table
+select * from dba_users;
+select * from tab;
+
+스키마 schema : 하나의 저장공간
+    외부스키마: 사용자나 응용프로그래머가 각 개인의 입장에서 필요로 하는 
+             데이터베이스의 논리적 구조를 정의한 것으로 1개이상 존재가능
+             서브 스키마(sub schema)로 라고도 표현하며, 사용자 View 관점에서의 스키마입니다.
+    내부스키마: 물리적 저장장치의 입장에서 본 데이터베이스 구조로, 
+				물리적인 저장장치와 밀접한 계층이다.	
+				내부적으로 물리적 하드웨어가 저장해야 영속적으로 사용가능. 
+				내부 하부적으로 움직이는 것들
+				시스템 프로그래머나 설계자 관점에서의 스키마.
+    개념스키마: 데이터베이스의 전체적인 논리적 구조, 
+				모든 응용프로그램이나 사용자들이 필요로 하는 
+				데이터를 종합한 조직 전체의 데이터베이스로 1개만 존재. DBA가 관리.
+
+스키마 = 메타데이터(전체 스키마가 어떻게 이루어져 있는지)
+
+Technically, a schema is a collection of database objects owned by a specific user. 
+Those objects include tables, indexes, views, stored procedures, etc. 
+In Oracle, a schema requires a user to be created. But you can create a user 
+that has no schema (i.e, no objects). So in Oracle, the user is the account 
+and the schema is the objects. It is possible in other database platforms 
+to have a schema without a user.
+
+권한설정
+	GRANT RESOURCE TO USER;
+
+제약조건 (CONSTRAINT)
+	컬럼값 NULL이 디폴트임
+	테이블 정의할때 컬럼마다 "컬럼명 NOT NULL" 제약조건 걸수 있음
+	unique, not null 한컬럼에 여러개 지정 가능
+	primary key(unique, not null)에는 기본적으로 index가 걸려있음
+	index 유저가 정의 하여 primary key가 아닌 다른 컬럼에 정의가능
+	CHECK 제약조건. 컬럼(도메인)을 체크
+		(ex) check 성별='남'
+        
+	DEFAULT 제약조건: 
+		테이블 컬럼안에 값이 없으면 디폴트값이 들어가도록
+	
+쿼리 GROUP BY!
+    데이터들을 원하는 그룹으로 나눌때 사용.
+인덱스
+	테이블 조회 속도 빠르게
+
+테이블
+	컬럼(도메인), 행 tuple(row), 테이블(객체)
+
+관리자계정 system/sys
+	사용자 권한부여/회수, 테이블 관리, DB생성,
+		OBJECT 생성 삭제
+
+DBA가 관리자 계정 이용
+
+일반 사용자들은
+	select, update, delete
+
+
+---
+오라클 SQL 레퍼런스
+https://docs.oracle.com/cd/E11882_01/server.112/e41084/toc.htm
+
+sqlplus system/oracle
+
+select username, account_status from dba_users where username='HR';
+
+alter user HR account unlock;
+alter user HR identified by hr;
+
+conn HR/hr;
+
+set linesize 300;
+set pagesize 10;
+
+clear screen;
+
+conn system/oracle;
+create user test identified by test;
+conn test/test;	--ERROR : lacks create session privilege
+grant connect to TEST;
+conn test/test; --SUCCESS
+
+save test
+	--test.sql
+
+@test
+
+conn hr/hr
+@test11
+
+save test
+save test11
+
+edit test
+edit ../test
+--상대 경로
+
+host
+
+exit
+
+grant resource to kh;
+-- resource: role
+--resource 권한: 테이블 생성 수정 삭제 할 수 있는
+--권한이 모두 있는것.
+
+delete 테이블 안에 데이터 삭제
+drop 테이블 자체를 삭제
+
+데이터 조작 -> 트랜젝션 제어 COMMIT
+
+테이블 = relation (entity)
+
+foreign key: 참조하고 있는 테이블에서 primary key 컬럼
+
+---
+테이블 생성시 로그인된 계정에 종속되어 생성
+각 계정에 따른 저장소가 DB에 생성됨.
+system / sys가 전체 저장공간 관리
+계정 생성 후, 계정별로 공간(schema) 할당
+	schema는 겹칠 수 없음
+	schema에 테이블 생성
+hr 교육용 계정
+
+
+DBMS 사용 이점
+데이터 종속성 <-> 독립성
+	어플리케이션에 종속 되지 않음
+텍스트 데이터(User.dat) input stream으로 읽을수 있음
+	<-> DBMS는 권한 확인
+DB 서버에 oracle 11g 설치. 연습할때는 개인 pc에
+
+정보처리 기사/산업기사
+
+---
+시험: 어플리케이션 개발(자바책 맨뒤 p227~)
+
+개발환경 구축사항
+	개발자들 환경설정 맞추기 예를들어 tomcat maven 버젼통합
+	git 이라는 소스관리 프로그램
+		형상 관리, 버젼 관리
+		개발환경 구축
+		제품 무결성을 유지
+		팀프로젝트 프로세스 관리
+		버젼관리 프로그램
+	테스트용서버 -> 실서버
+
+클라이언트 개발 요구사항 파악 아닌것?
+	클라이언트와 대화
+	요구사항 문서 받기
+	비즈니스 로직 (업무처리 로직)
+		회사 보고서 문서로 파악
+
+사용자 요구사항
+	분석 - 설계 - 구현 - 테스트
+		이과정에서 산출물들:
+			문서, 유스케이스 클래스 다이어그램
+			구현 산출물(ppt)문서들
+			일관성을 유지하기위한 산출물?
+			요구사항 추적 매트릭스: 프로젝트 진행단계별로 요구사항들이 어느 페이지 또는 
+				어느 컴포넌트 등에 반영이 되었는지 매칭하는 표형식의 문서
+
+Architecture 프로그램 구성 기반, 설계흐름
+	client-server acrhitecture
+	mvc architecture
+	service oriented architecture
+
+소프트웨어 architecture
+	서비스지향 아키텍쳐(SOA : Service Oriented Architecture)
+		웹서비스나 REST 서비스로 구현된 
+		SW 모듈을 BPEL로 구현된 프로세스이다. 
+		오케스트레이션 함으로써 프로세스 변경에 
+		따른 정보시스템의 재구성을 
+		신속 유용하게 할 수 있는 방식이다.
+
+프로젝트 관리할때, 어떻게 하는지?
+	버젼 관리 프로그램 git
+
+어플리케이션 성능 관리: 5가지 속성
+	1. 사용자환경 
+		monitoring 및 평가 
+    2. 소프트/하드웨어 요소들 
+		성능 측정
+	3. 애플리케이션 전송 플랫폼을 구성하는 
+		소프트/하드웨어에서 이동하는 
+		사용자정의 트랜잭션 프로파일링
+    4. 플랫폼을 구성하는 소프트/하드웨어의 
+		리소스 수요평가
+	5. 위 4가지로 사용자 패턴 분석 성능 최적화위해 
+		필요한 조치들을 우선순위에 따라 지정
+
+
+
+통계 : java jfreechart
+https://www.canva.com/design/DADb3VzYhPg/cctj8YAg2DAvd-Mrs1EhCg/edit?category=tACFasDnyEQ
+
+---[요구사항 확인]시험 - 자바책 뒷부분 index-p213~226  
+
+현행시스템 파악 3단계
+	1. 시스템 구성 기능 interface 파악
+	2. architecture software 현황 파악
+	3. 어떤 hardware/network에서 실행 되는지 파악
+
+운영체제별 요구사항 식별을 위해서 다음을 고려:
+    - 신뢰도 : 장기간 사용시 문제 가능성
+    - 성능: 대용량 데이터처리 능력 파악
+    - 기술지원: 
+    - 주변기기: 
+    - 구축비용: 
+
+
+개발기술 환경 파악:
+	운영체제 응용소프트웨어사이에 위치한 middleware 및 dbms
+	dbms를 고려할 때 주의사항
+		1. 장기간 운영시 장애 발생 가능성 파악
+		2. 대용량 데이터 처리능력 파악
+		3. 안정성 파악
+		4. db구축 비용 파악 (유료 software 오라클 등 회사에 지불할 금액)
+
+요구사항 개발 프로세스: 도출-분석-명세-확인
+	-도출: 요구사항 찾아내기 discover
+
+요구사항 분석
+
+요구사항 기술적 타당성검토(4가지)
+	성능, 용량 산정 적정성
+	
+    시스템간 상호 운용성 - 다른 목적을 지닌 두개의 시스템을 지닌. 정보시스템을 
+        교환하면서 효과적으로 운용 가능여부. 타 시스템/기계과 호환되는지.
+
+    IT 트렌드 부합 여부, IT시장 성숙도, 기술 보안 여부
+        정보기술 발전 방향에 맞게
+        실현 가능성(특허 장애물 파악) 파악
+    
+	기술 위험도, risk
+    
+분석모델 확인하기
+    분석모델 검증
+        액터, 유스케이스, 유스케이스 명세서
+        
+
+클래스 다이어그램에 포함되는 요소들/의미 파악
+	클래스/멤버변수 등
+
+
+한국정보 지능원
+	정보시스템 감리 지침/감사
+		지침에 따라 분석모델 검증
+		유스케이스 검증, 개념 클래스 검증, 분석클래스 검증
+		
+		UML 클래스/활동/시스템/
+			유스케이스 다이어그램
+				사용자 등 어떻게 사용되고, actor누가 사용하는지,
+				각시스템이 무슨 기능인지
+			시퀀스 다이어그램(순서)
+			
+			활동 다이어그램
+
+요구사항 식별
+	신뢰도(장기간 가능), 
+	성능 (대량 데이터 처리가능)
+	기술지원(vendor 소프트웨어가 잘 지원해주는지, open source처럼 사용자들 정보공유하는지,
+			오픈소스 라이센스인지), 
+	주변기기,
+	구축비용 (장비 비용, 응용프로그램 라이센스, 유지관리비)
+
+웹서비스
+	middleware (web application Server, WAS 예를들어 
+        - tomcat netty 가 동적으로 어떻게 돌아가는지, 개념/ 내용)
+
+
+--
+sql문 .properties에서 가져옴.
+MyBatis에서 가져오는것과 비슷
+--
+
+--
+Thread
+ mainT
+ T1
+ T2
+ thread끝나는 시점은 다를수 있음
+  
+ 교착상태(dead-lock 동시에 CPU 이용)주의
+ JVM이 메인 thread 생성
+ 
+ new 객체 : Heap영역 메모리
+ 객체.start()
+ run()오버라이드
+
+Thread 상속하면 ,다른 클래스 상속 불가(다중상속x)
+Runnable implement 해서, 다른 클래스 상속 허용
+
+
+---
+Java Network
+server - client
+
+ipconfig
+ip4(ip addr) globally unique
+255^4
+사설(192.168.0.x)/
+공용 네트워크
+(ips 업체) 통신선로 ->공인아이피 구매
+외부 공인아이피<->공유기(사설 아이피주소 할당)
+192.168.0.1 개인 공유기
+외부IP(공용ip)<->내부IP
+네트워크 카드에 따라 16진수로 고유번호 부여
+	(공유기 접근 가능)
+
+mac주소관리 등록후 secure wifi
+외부에서 wifi 연결 차단
+ipconfig
+기본 게이트웨이
+포트포워딩
+	domainName:ip
+	외부ip:ip
+nslookup
+	www.naver.com
+	210.89.164.90
+
+상대 ip 접근
+	INetAddress 클래스
+웹 브라우저 검색창: 공용ip입력
+
+socket programming
+
+
+---
+openjdk
+시스템 변수: 
+    JAVA_HOME
+        C:\Program Files\openjdk-11.0.2_windows-x64_bin\jdk-11.0.2
+    Path
+        %JAVA_HOME%\bin
+
+eclipse window > preference >java >installed jre
+java 버전 변경
+
+
+
+
+
+--instance method : 
+	Heap에 객체가 생성되어야 호출가능.
+new MethodTest().calculator(10, 20, '+');
+new MethodTest().calculator2(20, 30, '/');
+
+[Heap]
+	[MethodTest]
+		[calculator]
+		[su1]10
+		[su2]20
+		[op] '+'
+	[MethodTest]
+		[calculator2]
+		[su1] 20
+		[su2] 30
+		[op] '/'
+		[result] .6666...
+	[MethodTest]
+		[concatString]
+		
+[Stack] first in last out
+    calculator2
+	calculator
+	main
+
+
+--memory
+[stack]
+    call된 method가 stack에 쌓이고, 
+    return 하면 stack 메모리에서 없어짐
+    선언된 기본자료형 변수 메모리에 저장
+    int[] arr; //reference 자료형(위치; 주소 저장됨)
+
+
+[heap] gc(garbage collection 자동으로 수행)
+배열
+new int[]
+new 객체
+
+
+--oop 클래스
+1. 야구선수
+------------
+	- 팀 team
+	- 등번호 backNO
+	- 연봉 sal
+	- 포지션 postion
+	- 키 height
+	- 무게 weight 
+	- 나이 age
+	- 성별 gem
+	- 국적
+	- 승률
+	- 부상기록
+2. 결혼정보프로그램 회원객체
+	- 성별
+	- 나이
+	- 연봉 공개여부
+	- 키 몸무게 공개여부
+	- 키
+	- 몸무게
+	- 결혼 이력
+	- 자녀여부
+	- 희망 배우자 나이
+	- 희망 배우자 스타일
+3. 전화번호부
+
+생성자 : Heap 메모리에 instance를 만듦
+Object obj = new Object();
+//obj에 주소값저장됨; obj.메소드(); obj.멤버;
+
+[Stack]
+	obj (reference variable stores address from Heap)
+[Heap]
+	Object주소값 0x123 과 접근연산자 .으로 멤버 접근
+	new 로 객체 생성시 Heap 메모리에 쌓임
+	할당안하면 Stack에 주소값 저장안됨
+	프로그램 실행은 Stack에 메모리를 읽으면서 진행됨
+[Static]
+클래스 변수; 객체 생성하지 않고 쓸수있는 저장공간.
+
+프로그램 시작과 동시에 
+[static]에 static 변수들 메모리 저장됨
+    new Person() [heap]에 저장된 static 변수들은
+    [static]에 있는 static변수를 참조하게됨.
+

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css_14_Layout.html</title>
+    <style>
+        div{
+            height:100px;
+            width:100px;
+            border: 1px solid red;
+        }
+        .add{
+            /* padding default = 0px; */
+            /* size increased : content area + 20px; */
+            padding: 20px;
+        }
+        .relative{
+            height: 300px;
+            width: 30%;
+            font-size:20px;
+        }
+        .emtest{
+            height: 300px;
+            width: 5em; /* default 기본크기 16 부모 font-size기준*/
+            /* width: 2rem; */
+            font-size: 1.5em;
+        }
+        .inline{
+            display: inline
+        }
+        .block{
+            display: block;
+            width: 500px;
+            height:500px;
+        }
+        .inlineblock{
+            display: inline-block;
+            width: 300px;
+            height: 200px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <div class="add"></div>
+    <div class="relative"></div>
+    <div class="relative">
+        <div class="emtest"></div>
+    </div>
+    <div class="inline">inline1</div>
+    <div class="inline">inline2</div>
+    <span>난 span1</span>난 span2</span>
+    <span>여기에 span2 선언했어</span>
+    <span class="inlineblock">여기에 span2 선언했어</span>
+    <span>이거는 어디에 붙나?</span><br>
+    <img src="media/icon.png" class="inline" alt="" width=100px height=100px>
+    <p>간단한 아이콘 입니다.</p>
+</body>
+</html>

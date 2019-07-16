@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css_15_border.html</title>
+    <style>
+
+        div{
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+            /* border-width: thick;  */
+            /* border-top-width: thick;  */
+            /* border-bottom-width: thick;  */
+            border-left-width: 20px; 
+        }
+        .dashed{
+            border-style: dashed;
+            border-left-width: 2px;  /* 10->2 overwite*/
+            border-color: skyblue;
+        }
+        .dotted{
+            border-style: dotted;
+            border-color: lime;
+        }
+        .double{
+            border-style: double;
+            border-right-color: midnightblue;
+        }
+        .groove{
+            border-style: groove;
+            border-left: 5px double silver;
+        }
+        .inset{
+            border-style: inset;
+        }
+        .outset{
+            border-style: outset;
+        }
+        .ridge{
+            border-style: ridge;
+        }
+        /* .solid{
+            border-style: solid;
+        } */
+
+        .border{
+            border: 3px solid green;
+            border-radius: 50px;
+            border-top-left-radius:  50px;
+            border-bottom-right-radius:  50px;
+            width: 100px;
+            height:80px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="dashed"></div>
+    <div class="dotted"></div>
+    <div class="double"></div>
+    <div class="groove"></div>
+    <div class="inset"></div>
+    <div class="outset"></div>
+    <div class="ridge"></div>
+    <div class="border">원으로 변경 해보자.</div>
+
+    <br><br><br><br>
+
+    <img src="media/jindo.jpg" alt="" class="boder">
+    <nav>
+        <ul id="menu">
+            <li><a href="http://">게시판</a></li>
+            <li><a href="http://">갤러리</a></li>
+            <li><a href="http://">자료실</a></li>
+        </ul>
+    </nav>
+    <style>
+        .boder{
+            border-radius: 100px;
+        }
+        img{
+            float:left;
+        }
+        nav{
+            float:left;
+            padding-top: 50px;
+        }
+        nav>ul>li{
+            display: inline;
+            margin-right: 50px;
+        }
+    </style>
+    
+</body>
+</html>
