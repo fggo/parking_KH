@@ -21,15 +21,14 @@ public class ParseJSON2 {
 		} catch(IOException e) {
 			e.printStackTrace();
 		}
+		String serviceKey = prop.getProperty("serviceKey2");
 
 		String ckanResceId = "prkplce-info-std";
-		String serviceKey = prop.getProperty("serviceKey2");
 
 		//case 1
 		String city = "서울특별시";
 		String temp = "%20";
 		String district = "강남구";
-
 
 		String instt_nm = city+temp+district;
 

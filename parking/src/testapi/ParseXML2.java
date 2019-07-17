@@ -19,23 +19,76 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 public class ParseXML2 {
-//	private static String getTagValue(String tag, Element eElement) {
-//	    NodeList nlList = eElement.getElementsByTagName(tag).item(0).getChildNodes();
-//	    Node nValue = (Node) nlList.item(0);
-//	    if(nValue == null) 
-//	        return null;
-//	    return nValue.getNodeValue();
-//	}
+	private static String getTagValue(String tag, Element eElement) {
+	    NodeList nlList = eElement.getElementsByTagName(tag).item(0).getChildNodes();
+	    Node nValue = (Node) nlList.item(0);
+	    if(nValue == null) 
+	        return null;
+	    return nValue.getNodeValue();
+	}
 
 	public static void main(String[] args) {
 		Properties prop = new Properties();
-		String serviceKey = "";
 		try {
 			prop.load(new FileReader("resources/config.properties"));
-			serviceKey = prop.getProperty("serviceKey");
 		} catch(IOException e) {
 			e.printStackTrace();
 		}
+		String serviceKey = prop.getProperty("serviceKey2");
+
+		String ckanResceId = "prkplce-info-std";
+
+		//case 1
+		String city = "서울특별시";
+		String temp = "%20";
+		String district = "강남구";
+
+		String instt_nm = city+temp+district;
+
+		//case 2
+//		B553774	서울시설공단
+//		B553766	서울교통공사
+//		B552067	서울특별시중구시설관리공단
+//		B551897	서울특별시성동구도시관리공단
+//		B551282	강북구도시관리공단
+//		instt_nm = "서울특별시성동구도시관리공단";
+
+//		KOR -> UTF-8 변환
+//		byte[] byteArr = instt_nm.getBytes(StandardCharsets.UTF_8);
+//		ByteBuffer byteBuffer = StandardCharsets.UTF_8.encode(instt_nm);
+//		instt_nm = new String(byteArr, StandardCharsets.UTF_8);
+
+		String urlStr = "http://api.data.go.kr/openapi/";
+		urlStr += ckanResceId;
+		urlStr += "?serviceKey=" + serviceKey;
+		urlStr += "&type=xml";
+//		urlStr += "&s_page=0";
+//		urlStr += "&s_list=1";
+		urlStr += "&instt_nm=" + instt_nm;
+//		3030000	서울특별시 성동구
+//		3040000	서울특별시 광진구
+//		3060000	서울특별시 중랑구
+//		3070000	서울특별시 성북구
+//		3080000	서울특별시 강북구
+//		3110000	서울특별시 은평구
+//		3140000	서울특별시 양천구
+//		3150000	서울특별시 강서구
+//		3160000	서울특별시 구로구
+//		3170000	서울특별시 금천구
+//		3180000	서울특별시 영등포구
+//		3190000	서울특별시 동작구
+//		3200000	서울특별시 관악구
+//		3210000	서울특별시 서초구
+//		3220000	서울특별시 강남구
+//		3230000	서울특별시 송파구
+//		3240000	서울특별시 강동구
+//		B553774	서울시설공단(노원구 도봉구 동대문구 마포구 서대문구 용산구 [위에 없는주소] +
+//		                  강남구 강동구 강북구 강서구 관악구 광진구 구로구 금천구 동작구 서초구 성동구 
+//		                  송파구 양천구 영등포구 은평구 종로구 중구)
+//		B553766	서울교통공사 (서초구 성동구)
+//		B552067	서울특별시중구시설관리공단 (중구)
+//		B551897	서울특별시성동구도시관리공단 (성동구)
+//		B551282	강북구도시관리공단 (강북구)
 
 		DocumentBuilderFactory dbFactory = null;
 		DocumentBuilder dBuilder = null;
@@ -45,7 +98,6 @@ public class ParseXML2 {
 		Parking p = null;
 
 		try {
-			String urlStr = "http://openapi.seoul.go.kr:8088/" +serviceKey+ "/xml/GetParkInfo/1/5/";
 			URL url = new URL(urlStr);
 
 			HttpURLConnection urlconnection = (HttpURLConnection) url.openConnection();
@@ -57,34 +109,63 @@ public class ParseXML2 {
 			doc = dBuilder.parse(urlStr);
 			doc.getDocumentElement().normalize();
 
-			NodeList nList = doc.getElementsByTagName("row");
+			NodeList nList = doc.getElementsByTagName("item");
 
 			System.out.println("Parsing List Num # = " + nList.getLength());
 
-//			for(int i = 0; i< nList.getLength(); i++) {
-//				Node nNode = nList.item(i);
-//				
-//				if(nNode.getNodeType() == Node.ELEMENT_NODE) {
+			for(int i = 0; i< nList.getLength(); i++) {
+				Node nNode = nList.item(i);
+				
+				if(nNode.getNodeType() == Node.ELEMENT_NODE) {
 //					p = new Parking();
-//
-//					Element eElement = (Element) nNode;
-//
+
+					Element eElement = (Element) nNode;
+					System.out.println(getTagValue("prkplceNo", eElement));
+
+//					prkplceNo	138-1-000001	주차장관리번호
+//					prkplceNm	해운대구청 주변 공영	주차장명
+//					prkplceSe	공영	주차장구분
+//					prkplceType	노상	주차장유형
+//					rdnmadr	부산광역시 해운대구 중동1로 37번길 일원	소재지도로명주소
+//					lnmadr	부산광역시 해운대구 중1동 1372-3번지 일원	소재지지번주소
+//					prkcmprt	27	주차구획수
+//					feedingSe	1	급지구분
+//					enforceSe	미시행	부제시행구분
+//					operDay	평일+토요일+공휴일	운영요일
+//					weekdayOperOpenHhmm	10:00	평일운영시작시각
+//					weekdayOperColseHhmm	22:00	평일운영종료시각
+//					satOperOperOpenHhmm	10:00	토요일운영시작시각
+//					satOperCloseHhmm	22:00	토요일운영종료시각
+//					holidayOperOpenHhmm	10:00	공휴일운영시작시각
+//					holidayCloseOpenHhmm	22:00	공휴일운영종료시각
+//					parkingchrgeInfo	유료	요금정보
+//					basicTime	10	주차기본시간
+//					basicCharge	500	주차기본요금
+//					addUnitTime	10	추가단위시간
+//					addUnitCharge	500	추가단위요금
+//					dayCmmtktAdjTime	300	1일주차권요금적용시간
+//					dayCmmtkt	15000	1일주차권요금
+//					monthCmmtkt		월정기권요금
+//					metpay	현금+카드	결제방법
+//					spcmnt		특기사항
+//					institutionNm	부산광역시 해운대구	관리기관명
+//					phoneNumber	051-749-4555	전화번호
+//					latitude	35.1617554732	위도
+//					hardness	129.162538632	경도
+//					referenceDate	2018-08-10	데이터기준일자
+//					insttCode	3330000	제공기관코드
+//					insttNm	부산광역시 해운대구	제공기관명
+//					numOfRows	100	한 페이지 결과 수
+//					pageNo	1	페이지 번호
+//					totalCount	1000	전체 응답 row수
+
 //					p.setParkingCode(getTagValue("PARKING_CODE", eElement));
-//					p.setParkingName(getTagValue("PARKING_NAME", eElement));
-//					p.setAddr(getTagValue("ADDR", eElement));
-//					p.setParkingType(getTagValue("PARKING_TYPE", eElement));
-//					p.setParkingTypeNm(getTagValue("PARKING_TYPE_NM", eElement));
-//					p.setOperationRule(Integer.valueOf(getTagValue("OPERATION_RULE", eElement)));
-//					p.setOperationRuleNm(getTagValue("OPERATION_RULE_NM", eElement));
-//					p.setTel(getTagValue("TEL", eElement));
-//					p.setQueStatus(Integer.valueOf(getTagValue("QUE_STATUS", eElement)));
-//					p.setQueStatusNm(getTagValue("QUE_STATUS_NM", eElement));
-//					p.setCapacity(Integer.valueOf(getTagValue("CAPACITY", eElement)));
+//					...
 //					p.setCurParking(Integer.valueOf(getTagValue("CUR_PARKING", eElement)));
 //					
 //					System.out.println(p);
-//				}
-//			}
+				}
+			}
 			
 		} catch(IOException e) {
 			e.printStackTrace();
