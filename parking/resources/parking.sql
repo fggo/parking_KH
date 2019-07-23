@@ -26,6 +26,13 @@ CREATE TABLE USER (
     CONSTRAINT chk_user_email CHECK (email_yn in ('Y','N'))
 );
 
+INSERT INTO USER VALUES(
+    '02201', 't2_id', 'tetpw', 'taese@ml.com', '010-t-11',
+    '댕댕이2', '경기도2', DEFAULT, DEFAULT, 'N', 'y'
+);
+
+select * from user;
+
 SHOW CREATE TABLE USER;
 -- ALTER TABLE USER MODIFY COLUMN user_code VARCHAR(20) COMMENT '회원 코드';
 -- ALTER TABLE USER MODIFY COLUMN id VARCHAR(20) COMMENT '아이디';
