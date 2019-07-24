@@ -21,7 +21,7 @@ public class ParseJSON2 {
 		} catch(IOException e) {
 			e.printStackTrace();
 		}
-		String serviceKey = prop.getProperty("serviceKey2");
+		String serviceKey2 = prop.getProperty("serviceKey2");
 
 		String ckanResceId = "prkplce-info-std";
 
@@ -48,7 +48,7 @@ public class ParseJSON2 {
 
 		String urlStr = "http://api.data.go.kr/openapi/";
 		urlStr += ckanResceId;
-		urlStr += "?serviceKey=" + serviceKey;
+		urlStr += "?serviceKey=" + serviceKey2;
 		urlStr += "&type=json";
 //		urlStr += "&s_page=0";
 //		urlStr += "&s_list=1";
