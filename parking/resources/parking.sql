@@ -8,9 +8,8 @@ USE parkingdb;
 DROP TABLE USER;
 CREATE TABLE USER (
     user_code VARCHAR(20) NOT NULL COMMENT '회원코드',
-    id VARCHAR(20) NOT NULL COMMENT '아이디',
-    pw VARCHAR(20) NOT NULL COMMENT '비밀번호',
     email VARCHAR(20) NOT NULL COMMENT '이메일',
+    pw VARCHAR(20) NOT NULL COMMENT '비밀번호',
     phone VARCHAR(20) NOT NULL COMMENT '폰번호',
     user_name VARCHAR(20) NOT NULL COMMENT '회원이름',
     user_addr VARCHAR(50) NOT NULL COMMENT '회원주소',
@@ -21,13 +20,14 @@ CREATE TABLE USER (
     email_yn CHAR(1) NOT NULL COMMENT '이메일 수신여부(Y/N)',
 
     CONSTRAINT pk_user_usercode PRIMARY KEY(user_code),
-    CONSTRAINT uq_user_id UNIQUE(id),
     CONSTRAINT chk_user_sms CHECK (sms_yn in ('Y','N')),
     CONSTRAINT chk_user_email CHECK (email_yn in ('Y','N'))
 );
 
+desc user;
+
 INSERT INTO USER VALUES(
-    '02201', 't2_id', 'tetpw', 'taese@ml.com', '010-t-11',
+    '02201', 'taese@ml.com', 'tetpw', '010-t-11',
     '댕댕이2', '경기도2', DEFAULT, DEFAULT, 'N', 'y'
 );
 
