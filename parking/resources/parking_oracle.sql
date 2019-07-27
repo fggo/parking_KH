@@ -1,129 +1,218 @@
--- create user
-sqlplus system/oracle
+-- SQLPLUS system/oracle;
+-- CREATE USER parking_admin IDENTIFIED by 1234;
+-- GRANT CONNECT, RESOURCE TO parking_admin;
+-- CONN parking_admin/1234;
 
-CREATE USER parking_admin IDENTIFIED by 1234;
-GRANT CONNECT, RESOURCE TO parking_admin;
-
-conn parking_admin/1234;
-
-DROP TABLE USER;
-DROP TABLE USERHISTORY;
-DROP TABLE CAR;
-DROP TABLE PARKINGHISTORY;
-DROP TABLE REVIEW;
-DROP TABLE QNABOARD;
-DROP TABLE NOTICE;
-DROP TABLE BOOKMARK;
-DROP TABLE COUPON;
 
 -- TABLE
-CREATE TABLE USER (
-    user_code VARCHAR(20) NOT NULL COMMENT '회원코드',
-    email VARCHAR(20) NOT NULL COMMENT '이메일',
-    pw VARCHAR(20) NOT NULL COMMENT '비밀번호',
-    phone VARCHAR(20) NOT NULL COMMENT '폰번호',
-    user_name VARCHAR(20) NOT NULL COMMENT '회원이름',
-    user_addr VARCHAR(50) NOT NULL COMMENT '회원주소',
-    -- modification_time DATETIME ON UPDATE CURRENT_TIMESTAMP
-    created_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '가입날짜',
-    login_date DATETIME COMMENT '최근 로그인날짜',
-    sms_yn CHAR(1) NOT NULL COMMENT '문자 수신여부(Y/N)',
-    email_yn CHAR(1) NOT NULL COMMENT '이메일 수신여부(Y/N)',
+DROP TABLE APPUSER CASCADE CONSTRAINTS;
+DROP TABLE USERHISTORY CASCADE CONSTRAINTS;
+DROP TABLE CAR CASCADE CONSTRAINTS;
+DROP TABLE PAYMENTHISTORY CASCADE CONSTRAINTS;
+DROP TABLE REVIEW CASCADE CONSTRAINTS;
+DROP TABLE QNABOARD CASCADE CONSTRAINTS;
+DROP TABLE NOTICE CASCADE CONSTRAINTS;
+DROP TABLE BOOKMARK CASCADE CONSTRAINTS;
+DROP TABLE COUPON CASCADE CONSTRAINTS;
 
-    CONSTRAINT pk_user_usercode PRIMARY KEY(user_code),
-    CONSTRAINT chk_user_sms CHECK (sms_yn in ('Y','N')),
-    CONSTRAINT chk_user_email CHECK (email_yn in ('Y','N'))
+SELECT * FROM APPUSER;
+SELECT * FROM USERHISTORY;
+SELECT * FROM CAR;
+SELECT * FROM PAYMENTHISTORY;
+SELECT * FROM REVIEW;
+SELECT * FROM QNABOARD;
+SELECT * FROM NOTICE;
+SELECT * FROM BOOKMARK;
+SELECT * FROM COUPON;
+
+SELECT * FROM user_constraints WHERE table_name IN
+    ('APPUSER', 'USERHISTORY', 'CAR', 'PAYMENTHISTORY', 'REVIEW', 'QNABOARD', 'NOTICE', 'BOOKMARK', 'COUPON');
+
+CREATE TABLE APPUSER (
+    user_code VARCHAR2(20) NOT NULL,
+    email VARCHAR2(20) NOT NULL,
+    pw VARCHAR2(20) NOT NULL,
+    phone VARCHAR2(20) NOT NULL,
+    user_name VARCHAR2(40) NOT NULL,
+    user_addr VARCHAR2(200) NOT NULL,
+    created_date TIMESTAMP DEFAULT SYSTIMESTAMP,
+    login_date TIMESTAMP,
+    sms_yn CHAR(1) NOT NULL,
+    email_yn CHAR(1) NOT NULL
 );
+COMMENT ON COLUMN APPUSER.user_code IS '회원코드';
+COMMENT ON COLUMN APPUSER.email IS '이메일';
+COMMENT ON COLUMN APPUSER.pw IS '비밀번호';
+COMMENT ON COLUMN APPUSER.phone IS '폰번호';
+COMMENT ON COLUMN APPUSER.user_addr IS '회원주소';
+COMMENT ON COLUMN APPUSER.created_date IS '가입날짜';
+COMMENT ON COLUMN APPUSER.login_date IS '최근 로그인날짜';
+COMMENT ON COLUMN APPUSER.sms_yn IS '문자 수신여부(Y/N)';
+COMMENT ON COLUMN APPUSER.email_yn IS '이메일 수신여부(Y/N)';
 
-INSERT INTO USER VALUES('0001','a@mail.com','test_pw','010-11','댕댕이','Gyeonggi-do',DEFAULT,DEFAULT,'N','y');
+ALTER TABLE APPUSER 
+    ADD CONSTRAINT pk_user PRIMARY KEY(user_code);
+ALTER TABLE APPUSER 
+    ADD CONSTRAINT chk_user_sms CHECK (sms_yn in ('Y','N'));
+ALTER TABLE APPUSER 
+    ADD CONSTRAINT chk_user_email CHECK (email_yn in ('Y','N'));
+-- INSERT INTO APPUSER VALUES(
+--     '0001','a@mail.com','test_pw','010-11','댕댕이','Gyeonggi-do',DEFAULT,DEFAULT,'y','n');
+
 
 CREATE TABLE USERHISTORY(
-    user_code VARCHAR(20) NOT NULL COMMENT '회원코드',
-    latitude FLOAT(8,5) UNSIGNED NOT NULL COMMENT '위도(0~90)',
-    longitude FLOAT(8,5) UNSIGNED NOT NULL COMMENT '경도(0~180)',
-    parkinglot_name VARCHAR(50) NOT NULL COMMENT '주차장이름',
-    parkinglot_addr VARCHAR(50) NOT NULL COMMENT '주차장주소',
-
-    CONSTRAINT fk_userhistory_usercode FOREIGN KEY(user_code) REFERENCES USER(user_code)
+    idx NUMBER(7) NOT NULL,
+    user_code VARCHAR2(20) NOT NULL,
+    latitude NUMBER(11,8) NOT NULL,
+    longitude NUMBER(11,8) NOT NULL,
+    parkinglot_name VARCHAR2(50) NOT NULL,
+    parkinglot_addr VARCHAR2(200) NOT NULL,
+    parking_date TIMESTAMP DEFAULT SYSTIMESTAMP
 );
+COMMENT ON COLUMN USERHISTORY.idx IS '이용내역 코드번호';
+COMMENT ON COLUMN USERHISTORY.user_code IS '회원코드';
+COMMENT ON COLUMN USERHISTORY.latitude IS '위도(0~90)';
+COMMENT ON COLUMN USERHISTORY.longitude IS '경도(0~180)';
+COMMENT ON COLUMN USERHISTORY.parkinglot_name IS '주차장이름';
+COMMENT ON COLUMN USERHISTORY.parkinglot_addr IS '주차장주소';
+COMMENT ON COLUMN USERHISTORY.parking_date IS '주차날짜';
+
+ALTER TABLE USERHISTORY
+    ADD CONSTRAINT pk_userhistory PRIMARY KEY(idx);
+ALTER TABLE USERHISTORY
+    ADD CONSTRAINT fk_userhistory_appuser FOREIGN KEY(user_code) REFERENCES APPUSER(user_code)
+    ON DELETE CASCADE;
+
 
 CREATE TABLE CAR(
-    user_code VARCHAR(20) NOT NULL COMMENT '회원코드',
-    capcity SMALLINT NOT NULL DEFAULT 0 COMMENT '차량 인승',
-    car_type VARCHAR(50) NOT NULL DEFAULT 'NO DATA' COMMENT '차량종류',
-    model VARCHAR(20) NOT NULL DEFAULT 'NO DATA' COMMENT '차량모델명',
-
-    CONSTRAINT fk_car_usercode FOREIGN KEY(user_code) REFERENCES USER(user_code)
+    user_code VARCHAR2(20) NOT NULL,
+    capcity NUMBER(2) DEFAULT 0,
+    car_type VARCHAR2(50),
+    model VARCHAR2(50)
 );
+COMMENT ON COLUMN CAR.user_code IS '회원코드';
+COMMENT ON COLUMN CAR.capcity IS '차량 인승';
+COMMENT ON COLUMN CAR.car_type IS '차량종류';
+COMMENT ON COLUMN CAR.model IS '차량모델명';
 
-CREATE TABLE PARKINGHISTORY(
-    user_code VARCHAR(20) NOT NULL COMMENT '회원코드',
-    parking_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '주차날짜',
-    parkinglot_name VARCHAR(50) NOT NULL COMMENT '주차장이름',
-    parkinglot_addr VARCHAR(50) NOT NULL COMMENT '주차장주소',
-    purchase_amount MEDIUMINT NOT NULL DEFAULT 0 COMMENT '주차정산요금',
-    instt_name VARCHAR(50) NOT NULL COMMENT '관리기관명',
-    instt_phone VARCHAR(50) COMMENT '관리기관 연락처',
+ALTER TABLE CAR
+    ADD CONSTRAINT fk_car_appuser FOREIGN KEY(user_code) REFERENCES APPUSER(user_code)
+    ON DELETE CASCADE;
 
-    CONSTRAINT fk_parkinghistory_usercode FOREIGN KEY(user_code) REFERENCES USER(user_code)
+
+CREATE TABLE PAYMENTHISTORY(
+    idx NUMBER(7) NOT NULL,
+    purchase_amount NUMBER(7) DEFAULT 0,
+    instt_name VARCHAR2(100),
+    instt_phone VARCHAR2(20),
+    payment_date TIMESTAMP DEFAULT SYSTIMESTAMP
 );
+COMMENT ON COLUMN PAYMENTHISTORY.idx IS '결제내역번호';
+COMMENT ON COLUMN PAYMENTHISTORY.purchase_amount IS '주차요금 결제액';
+COMMENT ON COLUMN PAYMENTHISTORY.instt_name IS '관리기관명';
+COMMENT ON COLUMN PAYMENTHISTORY.instt_phone IS '관리기관 연락처';
+COMMENT ON COLUMN PAYMENTHISTORY.payment_date IS '주차요금 결제일';
+
+-- ALTER TABLE PAYMENTHISTORY
+--     ADD CONSTRAINT pk_paymenthistory PRIMARY KEY(idx);
+ALTER TABLE PAYMENTHISTORY
+    ADD CONSTRAINT fk_paymenthistory_userhistory FOREIGN KEY(idx) REFERENCES userhistory(idx)
+    ON DELETE CASCADE;
+
 
 CREATE TABLE REVIEW(
-	idx SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '리뷰글번호',
-    user_code VARCHAR(20) NOT NULL COMMENT '회원코드',
-    latitude FLOAT(8,5) NOT NULL COMMENT '위도(0~90)',
-    longitude FLOAT(8,5) NOT NULL COMMENT '경도(0~180)',
-    parkinglot_name VARCHAR(50) NOT NULL COMMENT '주차장이름',
-    parkinglot_addr VARCHAR(50) NOT NULL COMMENT '주차장주소',
-    review_title VARCHAR(50) NOT NULL COMMENT '리뷰 제목',
-    review_content VARCHAR(50) NOT NULL COMMENT '리뷰 작성글',
-    created_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '작성날짜',
-    rating TINYINT(1) UNSIGNED NOT NULL COMMENT '평점(1~5 정수)',
-    
-    CONSTRAINT pk_review_idx PRIMARY KEY(idx),
-    CONSTRAINT fk_review_usercode FOREIGN KEY(user_code) REFERENCES USER(user_code),
-    CONSTRAINT chk_review_rating CHECK (rating in (1,2,3,4,5))
+	idx NUMBER(7) NOT NULL,
+    review_title VARCHAR2(50) NOT NULL,
+    review_content VARCHAR2(50) NOT NULL,
+    created_date TIMESTAMP DEFAULT SYSTIMESTAMP,
+    rating NUMBER(1) NOT NULL
 );
--- Error Code: 1075. Incorrect table definition; 
--- there can be only one auto column and it must be defined as a key	0.000 sec
-CREATE TABLE QNABOARD(
-    idx SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '문의글번호',
-    user_code VARCHAR(20) NOT NULL COMMENT '회원코드',
-    qna_title VARCHAR(50) NOT NULL COMMENT '문의글 제목',
-    qna_content VARCHAR(50) NOT NULL COMMENT '문의글 내용',
-    created_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '작성날짜',
+COMMENT ON COLUMN REVIEW.idx IS '코드번호';
+COMMENT ON COLUMN REVIEW.review_title IS '리뷰 제목';
+COMMENT ON COLUMN REVIEW.review_content IS '리뷰 작성글';
+COMMENT ON COLUMN REVIEW.created_date IS '작성날짜';
+COMMENT ON COLUMN REVIEW.rating IS '평점(1~5 정수)';
 
-    CONSTRAINT pk_qnaboard_idx PRIMARY KEY(idx),
-    CONSTRAINT fk_qnaboard_usercode FOREIGN KEY(user_code) REFERENCES USER(user_code)
+ALTER TABLE REVIEW
+    ADD CONSTRAINT fk_review_userhistory FOREIGN KEY(idx) REFERENCES userhistory(idx)
+    ON DELETE CASCADE;
+ALTER TABLE REVIEW
+    ADD CONSTRAINT chk_review_rating CHECK (rating in (1,2,3,4,5));
+
+
+CREATE TABLE QNABOARD(
+    idx NUMBER(7) NOT NULL,
+    user_code VARCHAR2(20) NOT NULL,
+    qna_title VARCHAR2(50) NOT NULL,
+    qna_content VARCHAR2(400) NOT NULL,
+    created_date TIMESTAMP DEFAULT SYSTIMESTAMP
 );
+COMMENT ON COLUMN QNABOARD.idx IS '문의글번호';
+COMMENT ON COLUMN QNABOARD.user_code IS '회원코드';
+COMMENT ON COLUMN QNABOARD.qna_title IS '문의글 제목';
+COMMENT ON COLUMN QNABOARD.qna_content IS '문의글 내용';
+COMMENT ON COLUMN QNABOARD.created_date IS '작성날짜';
+
+ALTER TABLE QNABOARD
+    ADD CONSTRAINT pk_qnaboard PRIMARY KEY(idx);
+ALTER TABLE QNABOARD
+    ADD CONSTRAINT fk_qnaboard_appuser FOREIGN KEY(user_code) REFERENCES APPUSER(user_code)
+    ON DELETE CASCADE;
+
 
 CREATE TABLE NOTICE(
-    idx SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '공지사항글번호',
-    user_code VARCHAR(20) NOT NULL COMMENT '회원코드',
-    notice_title VARCHAR(50) NOT NULL COMMENT '공지사항 제목',
-    notice_content VARCHAR(50) NOT NULL COMMENT '공지사항 내용',
-    created_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '작성날짜',
-    view_count SMALLINT UNSIGNED COMMENT '조회수',
-
-    CONSTRAINT pk_notice_idx PRIMARY KEY(idx),
-    CONSTRAINT fk_notice_usercode FOREIGN KEY(user_code) REFERENCES USER(user_code)
+    idx NUMBER(7) NOT NULL,
+    user_code VARCHAR2(20) NOT NULL,
+    notice_title VARCHAR2(50) NOT NULL,
+    notice_content VARCHAR2(400) NOT NULL,
+    created_date TIMESTAMP DEFAULT SYSTIMESTAMP,
+    view_count NUMBER(7)
 );
+COMMENT ON COLUMN NOTICE.idx IS '공지사항글번호';
+COMMENT ON COLUMN NOTICE.user_code IS '회원코드';
+COMMENT ON COLUMN NOTICE.notice_title IS '공지사항 제목';
+COMMENT ON COLUMN NOTICE.notice_content IS '공지사항 내용';
+COMMENT ON COLUMN NOTICE.created_date IS '작성날짜';
+COMMENT ON COLUMN NOTICE.view_count IS '조회수';
+
+ALTER TABLE NOTICE 
+    ADD CONSTRAINT pk_notice PRIMARY KEY(idx);
+ALTER TABLE NOTICE
+    ADD CONSTRAINT fk_notice_appuser FOREIGN KEY(user_code) REFERENCES APPUSER(user_code)
+    ON DELETE CASCADE;
+
 
 CREATE TABLE BOOKMARK(
-    user_code VARCHAR(20) NOT NULL COMMENT '회원코드',
-    parkinglot_name VARCHAR(50) NOT NULL COMMENT '주차장이름',
-    parkinglot_addr VARCHAR(50) NOT NULL COMMENT '주차장주소',
-    latitude FLOAT(8,5) UNSIGNED NOT NULL COMMENT '위도(0~90)',
-    longitude FLOAT(8,5) UNSIGNED NOT NULL COMMENT '경도(0~180)',
-
-    CONSTRAINT fk_bookmark_usercode FOREIGN KEY(user_code) REFERENCES USER(user_code)
+    idx NUMBER(3) NOT NULL,
+    user_code VARCHAR2(20) NOT NULL,
+    latitude NUMBER(11,8) NOT NULL,
+    longitude NUMBER(11,8) NOT NULL
 );
+COMMENT ON COLUMN BOOKMARK.idx IS '북마크번호';
+COMMENT ON COLUMN BOOKMARK.user_code IS '회원코드';
+COMMENT ON COLUMN BOOKMARK.latitude IS '위도(0~90)';
+COMMENT ON COLUMN BOOKMARK.longitude IS '경도(0~180)';
+
+ALTER TABLE BOOKMARK 
+    ADD CONSTRAINT pk_bookmark PRIMARY KEY(idx);
+ALTER TABLE BOOKMARK
+    ADD CONSTRAINT fk_bookmark_appuser FOREIGN KEY(user_code) REFERENCES APPUSER(user_code)
+    ON DELETE CASCADE;
+
 
 CREATE TABLE COUPON(
-    user_code VARCHAR(20) NOT NULL COMMENT '회원코드',
-    coupon_code CHAR(16) NOT NULL COMMENT '쿠폰번호',
-    expired CHAR(1),
-    
-    CONSTRAINT pk_coupon_code PRIMARY KEY(coupon_code),
-    CONSTRAINT chk_coupon_expired CHECK (expired in('Y', 'N'))
+    coupon_code CHAR(16) NOT NULL,
+    user_code VARCHAR2(20) NOT NULL,
+    expired_yn CHAR(1)
 );
+COMMENT ON COLUMN COUPON.coupon_code IS '쿠폰번호';
+COMMENT ON COLUMN COUPON.user_code IS '회원코드';
+COMMENT ON COLUMN COUPON.expired_yn IS '쿠폰 사용기한 초과여부'; 
+
+ALTER TABLE COUPON
+    ADD CONSTRAINT pk_coupon PRIMARY KEY(coupon_code);
+ALTER TABLE COUPON
+    ADD CONSTRAINT fk_coupon_appuser FOREIGN KEY(user_code) REFERENCES APPUSER(user_code)
+    ON DELETE CASCADE;
+ALTER TABLE COUPON
+    ADD CONSTRAINT chk_coupon_expired_yn CHECK (expired_yn in('Y', 'N'));

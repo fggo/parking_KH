@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="483B0160-503A-DE49-4106-9C87E1030DA3" containerWithKeyObject="CB3A3B5A-3820-12BD-C72A-2CA8321A9DBF" localFKIndex="48567C10-39AF-4E37-74B0-33030C815844" name="FK_PAYMENTHISTORY_USERHISTORY">
+<sourceConnName>parking_conn</sourceConnName>
+<sourceObjSchema>PARKING_ADMIN</sourceObjSchema>
+<sourceObjName>FK_PAYMENTHISTORY_USERHISTORY</sourceObjName>
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:53 UTC</createdTime>
+<ownerDesignName>parking_model</ownerDesignName>
+<referredTableLongName>PARKING_ADMIN.USERHISTORY</referredTableLongName>
+<deleteRule>CASCADE</deleteRule>
+<referredTableID>EC5767DF-0467-7ED7-4C71-F0BE84F17FA6</referredTableID>
+<keyObject>B5CDC80F-BFBA-F10A-7125-2A58D8300E0A</keyObject>
+<referredKeyID>B5CDC80F-BFBA-F10A-7125-2A58D8300E0A</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>IDX</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

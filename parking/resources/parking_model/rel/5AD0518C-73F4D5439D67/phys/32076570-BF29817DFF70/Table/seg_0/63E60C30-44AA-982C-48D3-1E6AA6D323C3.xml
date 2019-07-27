@@ -1,0 +1,61 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="COUPON" directorySegmentName="seg_0" id="63E60C30-44AA-982C-48D3-1E6AA6D323C3">
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:46 UTC</createdTime>
+<ownerDesignName>parking_model</ownerDesignName>
+<schemaObject>EDBE4B06-4898-7056-E327-C91C35924C96</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>84276BC6-A1DD-393C-6200-D48E0009B01D</segment>
+<tableSpace>C2E63CAC-1FE5-0E6B-CEF4-E800B6452647</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="EXPIRED_YN" id="1ECC7BE8-8CC4-D7EF-E796-991C9BBF1E3A">
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:46 UTC</createdTime>
+<ownerDesignName>parking_model</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="COUPON_CODE" id="2C4D7B23-CD57-EAE2-CC85-53F01C07387E">
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:46 UTC</createdTime>
+<ownerDesignName>parking_model</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="USER_CODE" id="8FD9E8EE-0C17-DA67-8961-B495DD71F828">
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:46 UTC</createdTime>
+<ownerDesignName>parking_model</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="PK_COUPON" id="8CAC6695-4966-8D5C-A7FA-9EFE856A9F5F">
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:46 UTC</createdTime>
+<ownerDesignName>parking_model</ownerDesignName>
+<schemaObject>EDBE4B06-4898-7056-E327-C91C35924C96</schemaObject>
+<segment>2D05A703-665A-2D2E-F395-E092CF6F64F1</segment>
+<tableSpace>C2E63CAC-1FE5-0E6B-CEF4-E800B6452647</tableSpace>
+</IndexProxy>
+</indexProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_COUPON_APPUSER" id="0BD1556A-3143-7CBB-8E1B-863A2239DCD4">
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:46 UTC</createdTime>
+<ownerDesignName>parking_model</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="PK_COUPON" id="DAC5BF5F-CC64-B81F-D07A-A1D8B2D93124">
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:46 UTC</createdTime>
+<ownerDesignName>parking_model</ownerDesignName>
+<segment>2D05A703-665A-2D2E-F395-E092CF6F64F1</segment>
+<tableSpace>C2E63CAC-1FE5-0E6B-CEF4-E800B6452647</tableSpace>
+<existingIndex>8CAC6695-4966-8D5C-A7FA-9EFE856A9F5F</existingIndex>
+<indexSegment>2D05A703-665A-2D2E-F395-E092CF6F64F1</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev11g>

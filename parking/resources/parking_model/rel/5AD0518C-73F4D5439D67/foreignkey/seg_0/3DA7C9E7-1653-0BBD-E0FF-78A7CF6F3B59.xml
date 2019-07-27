@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="3DA7C9E7-1653-0BBD-E0FF-78A7CF6F3B59" containerWithKeyObject="0993D63C-B498-D6BD-758F-026D7E62C27D" localFKIndex="CFDA7470-F898-5C00-0243-754A7BCBDA29" name="FK_CAR_APPUSER">
+<sourceConnName>parking_conn</sourceConnName>
+<sourceObjSchema>PARKING_ADMIN</sourceObjSchema>
+<sourceObjName>FK_CAR_APPUSER</sourceObjName>
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:42 UTC</createdTime>
+<ownerDesignName>parking_model</ownerDesignName>
+<referredTableLongName>PARKING_ADMIN.APPUSER</referredTableLongName>
+<deleteRule>CASCADE</deleteRule>
+<referredTableID>910632AC-1FBC-3666-DBF2-3B3000108F9E</referredTableID>
+<keyObject>681F4D29-CD59-ED92-CFCC-4947A2517680</keyObject>
+<referredKeyID>681F4D29-CD59-ED92-CFCC-4947A2517680</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>USER_CODE</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

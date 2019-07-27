@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableSpaceOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TableSpaceOraclev10g" name="SYSTEM" directorySegmentName="seg_0" id="C2E63CAC-1FE5-0E6B-CEF4-E800B6452647">
+<sourceConnName>parking_conn</sourceConnName>
+<sourceObjSchema>PARKING_ADMIN</sourceObjSchema>
+<sourceObjName>SYSTEM</sourceObjName>
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:32 UTC</createdTime>
+<ownerDesignName>parking_model</ownerDesignName>
+<emUniformSize>0</emUniformSize>
+<extentManagement>LOCAL</extentManagement>
+</TableSpaceOraclev10g>

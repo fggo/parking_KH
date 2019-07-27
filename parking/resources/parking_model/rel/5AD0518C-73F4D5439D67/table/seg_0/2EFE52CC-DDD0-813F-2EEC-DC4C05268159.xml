@@ -1,0 +1,151 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="2EFE52CC-DDD0-813F-2EEC-DC4C05268159" schemaObject="EDBE4B06-4898-7056-E327-C91C35924C96" name="NOTICE">
+<sourceConnName>parking_conn</sourceConnName>
+<sourceObjSchema>PARKING_ADMIN</sourceObjSchema>
+<sourceObjName>NOTICE</sourceObjName>
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:49 UTC</createdTime>
+<ownerDesignName>parking_model</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDX" id="93173232-C56E-4DBA-BF2D-C71DD5328C4E">
+<sourceConnName>parking_conn</sourceConnName>
+<sourceObjSchema>NOTICE</sourceObjSchema>
+<sourceObjName>IDX</sourceObjName>
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:49 UTC</createdTime>
+<commentInRDBMS>공지사항글번호</commentInRDBMS>
+<ownerDesignName>parking_model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,7,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="USER_CODE" id="08C027F8-0145-A8BE-E24A-ED9E2CB524D9">
+<sourceConnName>parking_conn</sourceConnName>
+<sourceObjSchema>NOTICE</sourceObjSchema>
+<sourceObjName>USER_CODE</sourceObjName>
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:49 UTC</createdTime>
+<commentInRDBMS>회원코드</commentInRDBMS>
+<ownerDesignName>parking_model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="0E1D9C97-E74B-92F0-23D2-F1CF65A0CDF5" referredColumn="DC8E52D8-6E8A-3D63-F81A-2A04584938C1"/>
+</associations>
+</Column>
+<Column name="NOTICE_TITLE" id="2045703E-F6F3-BD66-EAF2-A04DA772D463">
+<sourceConnName>parking_conn</sourceConnName>
+<sourceObjSchema>NOTICE</sourceObjSchema>
+<sourceObjName>NOTICE_TITLE</sourceObjName>
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:49 UTC</createdTime>
+<commentInRDBMS>공지사항 제목</commentInRDBMS>
+<ownerDesignName>parking_model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NOTICE_CONTENT" id="44316D4F-DF72-3F57-45AE-B471B40A5F78">
+<sourceConnName>parking_conn</sourceConnName>
+<sourceObjSchema>NOTICE</sourceObjSchema>
+<sourceObjName>NOTICE_CONTENT</sourceObjName>
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:49 UTC</createdTime>
+<commentInRDBMS>공지사항 내용</commentInRDBMS>
+<ownerDesignName>parking_model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>400 BYTE</dataTypeSize>
+<ownDataTypeParameters>400 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CREATED_DATE" id="5FAA958E-E407-AD06-6712-DD7AF6EC5C43">
+<sourceConnName>parking_conn</sourceConnName>
+<sourceObjSchema>NOTICE</sourceObjSchema>
+<sourceObjName>CREATED_DATE</sourceObjName>
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:49 UTC</createdTime>
+<commentInRDBMS>작성날짜</commentInRDBMS>
+<ownerDesignName>parking_model</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT015</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<defaultValue>SYSTIMESTAMP</defaultValue>
+<ownDataTypeParameters>,6,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="VIEW_COUNT" id="FC0176E6-683D-9A0A-7F9E-68B043E14964">
+<sourceConnName>parking_conn</sourceConnName>
+<sourceObjSchema>NOTICE</sourceObjSchema>
+<sourceObjName>VIEW_COUNT</sourceObjName>
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:49 UTC</createdTime>
+<commentInRDBMS>조회수</commentInRDBMS>
+<ownerDesignName>parking_model</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,7,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="DF1B9765-2CF5-4229-9CBE-B488472C7636" name="PK_NOTICE">
+<sourceConnName>parking_conn</sourceConnName>
+<sourceObjSchema>PARKING_ADMIN</sourceObjSchema>
+<sourceObjName>PK_NOTICE</sourceObjName>
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:49 UTC</createdTime>
+<ownerDesignName>parking_model</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="93173232-C56E-4DBA-BF2D-C71DD5328C4E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="85125E90-C053-01D7-D159-E3303226C89C" schemaObject="EDBE4B06-4898-7056-E327-C91C35924C96" name="PK_NOTICE">
+<sourceConnName>parking_conn</sourceConnName>
+<sourceObjSchema>PARKING_ADMIN</sourceObjSchema>
+<sourceObjName>PK_NOTICE</sourceObjName>
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:49 UTC</createdTime>
+<ownerDesignName>parking_model</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="93173232-C56E-4DBA-BF2D-C71DD5328C4E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="654B9194-DC63-F581-D119-C685071D9420" name="FK_NOTICE_APPUSER">
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:49 UTC</createdTime>
+<ownerDesignName>parking_model</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="08C027F8-0145-A8BE-E24A-ED9E2CB524D9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,107 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="63E60C30-44AA-982C-48D3-1E6AA6D323C3" schemaObject="EDBE4B06-4898-7056-E327-C91C35924C96" name="COUPON">
+<sourceConnName>parking_conn</sourceConnName>
+<sourceObjSchema>PARKING_ADMIN</sourceObjSchema>
+<sourceObjName>COUPON</sourceObjName>
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:46 UTC</createdTime>
+<ownerDesignName>parking_model</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="COUPON_CODE" id="2C4D7B23-CD57-EAE2-CC85-53F01C07387E">
+<sourceConnName>parking_conn</sourceConnName>
+<sourceObjSchema>COUPON</sourceObjSchema>
+<sourceObjName>COUPON_CODE</sourceObjName>
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:46 UTC</createdTime>
+<commentInRDBMS>쿠폰번호</commentInRDBMS>
+<ownerDesignName>parking_model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>16 BYTE</dataTypeSize>
+<ownDataTypeParameters>16 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="USER_CODE" id="8FD9E8EE-0C17-DA67-8961-B495DD71F828">
+<sourceConnName>parking_conn</sourceConnName>
+<sourceObjSchema>COUPON</sourceObjSchema>
+<sourceObjName>USER_CODE</sourceObjName>
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:46 UTC</createdTime>
+<commentInRDBMS>회원코드</commentInRDBMS>
+<ownerDesignName>parking_model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C73D7417-ECD7-B599-4288-71A6E0587966" referredColumn="DC8E52D8-6E8A-3D63-F81A-2A04584938C1"/>
+</associations>
+</Column>
+<Column name="EXPIRED_YN" id="1ECC7BE8-8CC4-D7EF-E796-991C9BBF1E3A">
+<sourceConnName>parking_conn</sourceConnName>
+<sourceObjSchema>COUPON</sourceObjSchema>
+<sourceObjName>EXPIRED_YN</sourceObjName>
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:46 UTC</createdTime>
+<commentInRDBMS>쿠폰 사용기한 초과여부</commentInRDBMS>
+<ownerDesignName>parking_model</ownerDesignName>
+<constraintName>CHK_COUPON_EXPIRED_YN</constraintName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1 BYTE</dataTypeSize>
+<listOfValues>
+<valueDef value="&apos;N&apos;" description=""/>
+<valueDef value="&apos;Y&apos;" description=""/>
+</listOfValues>
+<ownDataTypeParameters>1 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="DAC5BF5F-CC64-B81F-D07A-A1D8B2D93124" name="PK_COUPON">
+<sourceConnName>parking_conn</sourceConnName>
+<sourceObjSchema>PARKING_ADMIN</sourceObjSchema>
+<sourceObjName>PK_COUPON</sourceObjName>
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:46 UTC</createdTime>
+<ownerDesignName>parking_model</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2C4D7B23-CD57-EAE2-CC85-53F01C07387E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8CAC6695-4966-8D5C-A7FA-9EFE856A9F5F" schemaObject="EDBE4B06-4898-7056-E327-C91C35924C96" name="PK_COUPON">
+<sourceConnName>parking_conn</sourceConnName>
+<sourceObjSchema>PARKING_ADMIN</sourceObjSchema>
+<sourceObjName>PK_COUPON</sourceObjName>
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:46 UTC</createdTime>
+<ownerDesignName>parking_model</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2C4D7B23-CD57-EAE2-CC85-53F01C07387E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0BD1556A-3143-7CBB-8E1B-863A2239DCD4" name="FK_COUPON_APPUSER">
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:46 UTC</createdTime>
+<ownerDesignName>parking_model</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8FD9E8EE-0C17-DA67-8961-B495DD71F828"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

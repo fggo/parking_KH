@@ -1,0 +1,77 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="NOTICE" directorySegmentName="seg_0" id="2EFE52CC-DDD0-813F-2EEC-DC4C05268159">
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:49 UTC</createdTime>
+<ownerDesignName>parking_model</ownerDesignName>
+<schemaObject>EDBE4B06-4898-7056-E327-C91C35924C96</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>84276BC6-A1DD-393C-6200-D48E0009B01D</segment>
+<tableSpace>C2E63CAC-1FE5-0E6B-CEF4-E800B6452647</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="USER_CODE" id="08C027F8-0145-A8BE-E24A-ED9E2CB524D9">
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:49 UTC</createdTime>
+<ownerDesignName>parking_model</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="NOTICE_TITLE" id="2045703E-F6F3-BD66-EAF2-A04DA772D463">
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:49 UTC</createdTime>
+<ownerDesignName>parking_model</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="NOTICE_CONTENT" id="44316D4F-DF72-3F57-45AE-B471B40A5F78">
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:49 UTC</createdTime>
+<ownerDesignName>parking_model</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="CREATED_DATE" id="5FAA958E-E407-AD06-6712-DD7AF6EC5C43">
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:49 UTC</createdTime>
+<ownerDesignName>parking_model</ownerDesignName>
+<defaultValue>SYSTIMESTAMP</defaultValue>
+</ColumnProxy>
+<ColumnProxy name="IDX" id="93173232-C56E-4DBA-BF2D-C71DD5328C4E">
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:49 UTC</createdTime>
+<ownerDesignName>parking_model</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="VIEW_COUNT" id="FC0176E6-683D-9A0A-7F9E-68B043E14964">
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:49 UTC</createdTime>
+<ownerDesignName>parking_model</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="PK_NOTICE" id="85125E90-C053-01D7-D159-E3303226C89C">
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:49 UTC</createdTime>
+<ownerDesignName>parking_model</ownerDesignName>
+<schemaObject>EDBE4B06-4898-7056-E327-C91C35924C96</schemaObject>
+<segment>2D05A703-665A-2D2E-F395-E092CF6F64F1</segment>
+<tableSpace>C2E63CAC-1FE5-0E6B-CEF4-E800B6452647</tableSpace>
+</IndexProxy>
+</indexProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_NOTICE_APPUSER" id="654B9194-DC63-F581-D119-C685071D9420">
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:49 UTC</createdTime>
+<ownerDesignName>parking_model</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="PK_NOTICE" id="DF1B9765-2CF5-4229-9CBE-B488472C7636">
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:49 UTC</createdTime>
+<ownerDesignName>parking_model</ownerDesignName>
+<segment>2D05A703-665A-2D2E-F395-E092CF6F64F1</segment>
+<tableSpace>C2E63CAC-1FE5-0E6B-CEF4-E800B6452647</tableSpace>
+<existingIndex>85125E90-C053-01D7-D159-E3303226C89C</existingIndex>
+<indexSegment>2D05A703-665A-2D2E-F395-E092CF6F64F1</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev11g>

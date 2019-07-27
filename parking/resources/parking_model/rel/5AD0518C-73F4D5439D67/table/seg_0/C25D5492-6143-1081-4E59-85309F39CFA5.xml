@@ -1,0 +1,134 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="C25D5492-6143-1081-4E59-85309F39CFA5" schemaObject="EDBE4B06-4898-7056-E327-C91C35924C96" name="QNABOARD">
+<sourceConnName>parking_conn</sourceConnName>
+<sourceObjSchema>PARKING_ADMIN</sourceObjSchema>
+<sourceObjName>QNABOARD</sourceObjName>
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:55 UTC</createdTime>
+<ownerDesignName>parking_model</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDX" id="5AFA706C-C776-328D-5E1C-27769C5A9D8E">
+<sourceConnName>parking_conn</sourceConnName>
+<sourceObjSchema>QNABOARD</sourceObjSchema>
+<sourceObjName>IDX</sourceObjName>
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:55 UTC</createdTime>
+<commentInRDBMS>문의글번호</commentInRDBMS>
+<ownerDesignName>parking_model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,7,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="USER_CODE" id="96676ABF-ECAC-6B24-E483-6B3DEF208A34">
+<sourceConnName>parking_conn</sourceConnName>
+<sourceObjSchema>QNABOARD</sourceObjSchema>
+<sourceObjName>USER_CODE</sourceObjName>
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:55 UTC</createdTime>
+<commentInRDBMS>회원코드</commentInRDBMS>
+<ownerDesignName>parking_model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C55E8EF7-6CE0-A01C-22F0-1973C326F170" referredColumn="DC8E52D8-6E8A-3D63-F81A-2A04584938C1"/>
+</associations>
+</Column>
+<Column name="QNA_TITLE" id="DF388850-A035-33FB-62B0-B29EA3009BCD">
+<sourceConnName>parking_conn</sourceConnName>
+<sourceObjSchema>QNABOARD</sourceObjSchema>
+<sourceObjName>QNA_TITLE</sourceObjName>
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:55 UTC</createdTime>
+<commentInRDBMS>문의글 제목</commentInRDBMS>
+<ownerDesignName>parking_model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="QNA_CONTENT" id="46A4130B-B082-D942-27DF-3B63F23A34DE">
+<sourceConnName>parking_conn</sourceConnName>
+<sourceObjSchema>QNABOARD</sourceObjSchema>
+<sourceObjName>QNA_CONTENT</sourceObjName>
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:55 UTC</createdTime>
+<commentInRDBMS>문의글 내용</commentInRDBMS>
+<ownerDesignName>parking_model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>400 BYTE</dataTypeSize>
+<ownDataTypeParameters>400 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CREATED_DATE" id="C8247065-C9BA-6443-E289-EC3098824C56">
+<sourceConnName>parking_conn</sourceConnName>
+<sourceObjSchema>QNABOARD</sourceObjSchema>
+<sourceObjName>CREATED_DATE</sourceObjName>
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:55 UTC</createdTime>
+<commentInRDBMS>작성날짜</commentInRDBMS>
+<ownerDesignName>parking_model</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT015</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<defaultValue>SYSTIMESTAMP</defaultValue>
+<ownDataTypeParameters>,6,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="C6B956F2-FCA4-2DED-C9FA-5CAC013AAD7A" name="PK_QNABOARD">
+<sourceConnName>parking_conn</sourceConnName>
+<sourceObjSchema>PARKING_ADMIN</sourceObjSchema>
+<sourceObjName>PK_QNABOARD</sourceObjName>
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:55 UTC</createdTime>
+<ownerDesignName>parking_model</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5AFA706C-C776-328D-5E1C-27769C5A9D8E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A40A2D40-F007-4C76-B525-04AAFDF600BF" schemaObject="EDBE4B06-4898-7056-E327-C91C35924C96" name="PK_QNABOARD">
+<sourceConnName>parking_conn</sourceConnName>
+<sourceObjSchema>PARKING_ADMIN</sourceObjSchema>
+<sourceObjName>PK_QNABOARD</sourceObjName>
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:55 UTC</createdTime>
+<ownerDesignName>parking_model</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5AFA706C-C776-328D-5E1C-27769C5A9D8E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D60D0D41-0CFD-A155-3BE3-B1C79673BD5A" name="FK_QNABOARD_APPUSER">
+<createdBy>foo_msi</createdBy>
+<createdTime>2019-07-27 14:19:55 UTC</createdTime>
+<ownerDesignName>parking_model</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="96676ABF-ECAC-6B24-E483-6B3DEF208A34"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
