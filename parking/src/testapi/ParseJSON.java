@@ -14,7 +14,7 @@ import org.json.JSONObject;
 public class ParseJSON {
 	public static void main(String[] args) {
 		Properties prop = new Properties();
-		try {
+try {
 			prop.load(new FileReader("resources/config.properties"));
 		} catch(IOException e) {
 			e.printStackTrace();
