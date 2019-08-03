@@ -22,6 +22,34 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
+    <script>
+        $(window).scroll(function () { 
+            //You've scrolled this much:
+            // console.log("You've scrolled " + $(window).scrollTop() + " pixels");
+
+            var nav=$('#navbar-search');
+            var main=$('#main-search');
+
+            if($(window).scrollTop() < 220){
+                nav.css('display', 'none');
+                main.css('display', '');
+
+                nav.prop('disabled', true);
+                main.prop('disabled', false);
+            }
+            else{
+                // nav.attr('type','');
+                // main.attr('type','hidden');
+                nav.css('display', '');
+                main.css('display', 'none');
+
+                nav.prop('disabled', false);
+                main.prop('disabled', true);
+            }
+
+        });
+    </script>
+
     <style>
         body {
             padding-top: 0.0rem;
@@ -35,6 +63,9 @@
         }
         .site-header a {
             color: #999;
+            transition: ease-in-out color .15s;
+        }
+        #navbar-search, #main-search{
             transition: ease-in-out color .15s;
         }
         
@@ -125,6 +156,18 @@
             <a class="navbar-brand" href="#">
                 <img src="./images/logo.png">
             </a>
+            <form id="navbar-search" class="form-inline m-2 menu-item">
+                <!-- <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"> -->
+                <input type="search" placeholder="Where do you need parking?" aria-describedby="button-addon5" class="form-control">
+                <div class="input-group-append">
+                <span class="input-group-btn">
+                    <button id="button-addon5" type="submit" class="btn btn-primary">
+                        <i class="fa fa-search"></i>
+                        <span class='glyphicon glyphicon-search'></span>
+                    </button>
+                </span>
+                </div>
+            </form>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -165,14 +208,17 @@
         <!-- cover -->
         <div class="jumbotron">
             <div class="mx-auto text-center">
-                <form action="" class="text-center" style="width: 450px;">
+                <form id="main-search" action="" class="text-center" style="width: 450px;">
                   <div class="input-group text-center">
                       <input type="search" placeholder="Where do you need parking?" aria-describedby="button-addon5" class="form-control">
                       <div class="input-group-append">
                         <span class="input-group-btn">
-                            <button id="button-addon5" type="submit" class="btn btn-primary"><i class="fa fa-search"></i><span class='glyphicon glyphicon-search'></span></button></span>
-                            
-                        </div>
+                            <button id="button-addon5" type="submit" class="btn btn-primary">
+                                <i class="fa fa-search"></i>
+                                <span class='glyphicon glyphicon-search'></span>
+                            </button>
+                        </span>
+                      </div>
                     </div>
                 </form>
             </div>
