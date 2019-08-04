@@ -23,14 +23,13 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
     <script>
-        $(window).scroll(function () { 
+        function checkScroll(){
             //You've scrolled this much:
             // console.log("You've scrolled " + $(window).scrollTop() + " pixels");
-
             var nav=$('#navbar-search');
             var main=$('#main-search');
 
-            if($(window).scrollTop() < 220){
+            if($(window).scrollTop() < 200){
                 nav.css('display', 'none');
                 main.css('display', '');
 
@@ -46,6 +45,12 @@
                 nav.prop('disabled', false);
                 main.prop('disabled', true);
             }
+        }
+        $(function(){
+            checkScroll();
+        });
+        $(window).scroll(function () { 
+            checkScroll();
 
         });
     </script>
