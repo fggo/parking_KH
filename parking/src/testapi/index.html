@@ -22,37 +22,32 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
+    <!-- jQuery : fadeToggle() method -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
     <script>
-        function checkScroll(){
-            //You've scrolled this much:
-            // console.log("You've scrolled " + $(window).scrollTop() + " pixels");
-            var nav=$('#navbar-search');
-            var main=$('#main-search');
-
-            if($(window).scrollTop() < 200){
-                nav.css('display', 'none');
-                main.css('display', '');
-
-                nav.prop('disabled', true);
-                main.prop('disabled', false);
-            }
-            else{
-                // nav.attr('type','');
-                // main.attr('type','hidden');
-                nav.css('display', '');
-                main.css('display', 'none');
-
-                nav.prop('disabled', false);
-                main.prop('disabled', true);
-            }
-        }
         $(function(){
-            checkScroll();
-        });
-        $(window).scroll(function () { 
-            checkScroll();
+            $('#nav-searchbar').hide();
+            var hasBeenTriggered = false;
 
+            $(window).scroll(function(){
+                if($(this).scrollTop()<200 && !hasBeenTriggered){
+                    // console.log("You've scrolled " + $(window).scrollTop() + " pixels");
+                }
+                else if($(this).scrollTop()>=200 && !hasBeenTriggered){
+                    hasBeenTriggered = true;
+                    $('#nav-searchbar').fadeToggle();
+                    $('#main-searchbar').fadeToggle();
+                }
+                else if($(this).scrollTop()<200 && hasBeenTriggered){
+                    hasBeenTriggered = false;
+                    $('#nav-searchbar').fadeToggle();
+                    $('#main-searchbar').fadeToggle();
+                }
+            });
+            
         });
+
     </script>
 
     <style>
@@ -63,14 +58,14 @@
         /* Custom translucent site header */
         .site-header {
             background-color: rgba(19, 37, 53, .75);
-            -webkit-backdrop-filter: saturate(180%) blur(20px);
-            backdrop-filter: saturate(180%) blur(20px);
+            /* -webkit-backdrop-filter: saturate(180%) blur(20px);
+            backdrop-filter: saturate(180%) blur(20px); */
         }
         .site-header a {
             color: #999;
             transition: ease-in-out color .15s;
         }
-        #navbar-search, #main-search{
+        #nav-searchbar, #main-searchbar{
             transition: ease-in-out color .15s;
         }
         
@@ -89,11 +84,8 @@
         }
 
         .help{
-            background-image: url('./images/help.jpg');
-
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center center;
+            background-color: #1F2E3C;
+            color : #fff;
             height:500px;
             margin-bottom: 0px;
             
@@ -162,7 +154,7 @@
                 <a class="navbar-brand" href="#">
                     <img src="./images/logo.png">
                 </a>
-                <form id="navbar-search" class="col-lg-4 mx-auto">
+                <form id="nav-searchbar" class="col-lg-4 mx-auto">
                     <div class="input-group">
                         <input type="search" placeholder="Where do you need parking?" aria-describedby="button-addon5" class="form-control">
                         <div class="input-group-append">
@@ -211,7 +203,7 @@
         <!-- cover -->
         <div class="jumbotron">
             <div class="mx-auto col-lg-5">
-                <form id="main-search" action="" class="" role="form">
+                <form id="main-searchbar" action="" class="" role="form">
                   <div class="input-group mb-4">
                       <input type="search" placeholder="Where do you need parking?" aria-describedby="button-addon5" class="form-control">
                       <div class="input-group-append">
@@ -223,7 +215,7 @@
         </div>
     
         
-        <div id="myCarousel" class="review carousel slide container" data-ride="carousel">
+        <div id="myCarousel" class="review carousel slide" data-ride="carousel">
             <div class="d-flex align-content-center justify-content-center pt-3">
                 <h1>
                     What users are saying
@@ -476,10 +468,6 @@
     <!-- <footer class="container">
         <p>&copy; project 2019.09</p>
     </footer> -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script>
-        window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')
-    </script>
     <!-- <script src="/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script> -->
 </body>
 
