@@ -156,27 +156,13 @@
 
 <body>
     <header>
-        <nav class="site-header navbar navbar-expand-md navbar-dark fixed-top py-0">
+        <nav class="site-header navbar navbar-expand-lg navbar-dark fixed-top py-0">
             <!-- navbar navbar-expand-md navbar-dark fixed-top bg-dark -->
-            <a class="navbar-brand" href="#">
-                <img src="./images/logo.png">
-            </a>
-            <!-- <form id="navbar-search" class="form-inline m-2 menu-item">
-                <input type="search" placeholder="Where do you need parking?" aria-describedby="button-addon5" class="form-control">
-                <div class="input-group-append">
-                    <span class="input-group-btn">
-                        <button id="button-addon5" type="submit" class="btn btn-primary">
-                            <i class="fa fa-search"></i>
-                            <span class='glyphicon glyphicon-search'></span>
-                        </button>
-                    </span>
-                </div>
-            </form> -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-                <form id="navbar-search" class="col-lg-5 mx-auto">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="./images/logo.png">
+                </a>
+                <form id="navbar-search" class="col-lg-4 mx-auto">
                     <div class="input-group">
                         <input type="search" placeholder="Where do you need parking?" aria-describedby="button-addon5" class="form-control">
                         <div class="input-group-append">
@@ -184,34 +170,39 @@
                         </div>
                     </div>
                 </form>
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link m-2 menu-item active">Review</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link m-2 menu-item">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link m-2 menu-item">Help</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle m-2 menu-item" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hi! OOO!</a>
-                        <div class="dropdown-menu m-2 menu-item col-xs-12" aria-labelledby="dropdown01">
-                            <a class="dropdown-item" href="#">My Reservations</a>
-                            <a class="dropdown-item" href="#">Account</a>
-                            <a class="dropdown-item" href="#">Payment Method</a>
-                            <a class="dropdown-item" href="#">Credit Balance</a>
-                            <a class="dropdown-item" href="#">My Vehicle</a>
-                            <a class="dropdown-item" href="#">Bookmark</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-outline-light m-2 " href="#">Log In</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-outline-light m-2 " href="#">Sign up</a>
-                    </li>
-                </ul>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link m-2 menu-item active">Review</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link m-2 menu-item">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link m-2 menu-item">Help</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle m-2 menu-item" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hi! OOO!</a>
+                            <div class="dropdown-menu m-2 menu-item col-xs-12" aria-labelledby="dropdown01">
+                                <a class="dropdown-item" href="#">My Reservations</a>
+                                <a class="dropdown-item" href="#">Account</a>
+                                <a class="dropdown-item" href="#">Payment Method</a>
+                                <a class="dropdown-item" href="#">Credit Balance</a>
+                                <a class="dropdown-item" href="#">My Vehicle</a>
+                                <a class="dropdown-item" href="#">Bookmark</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-outline-light m-2 " href="#">Log In</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-outline-light m-2 " href="#">Sign up</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
     </header>
@@ -232,7 +223,7 @@
         </div>
     
         
-        <div id="myCarousel" class="review carousel slide" data-ride="carousel">
+        <div id="myCarousel" class="review carousel slide container" data-ride="carousel">
             <div class="d-flex align-content-center justify-content-center pt-3">
                 <h1>
                     What users are saying
