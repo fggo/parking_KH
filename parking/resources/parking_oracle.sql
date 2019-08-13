@@ -40,10 +40,12 @@ CREATE TABLE LOTUSER (
     sms_yn CHAR(1) NOT NULL,
     email_yn CHAR(1) NOT NULL
 );
+INSERT INTO LOTUSER VALUES('001', 'admin', 'admin','010','admin', 'seoul', DEFAULT, DEFAULT,'N','Y');
 COMMENT ON COLUMN LOTUSER.user_code IS '회원코드';
 COMMENT ON COLUMN LOTUSER.email IS '이메일';
 COMMENT ON COLUMN LOTUSER.pw IS '비밀번호';
 COMMENT ON COLUMN LOTUSER.phone IS '폰번호';
+COMMENT ON COLUMN LOTUSER.user_name IS '회원이름';
 COMMENT ON COLUMN LOTUSER.user_addr IS '회원주소';
 COMMENT ON COLUMN LOTUSER.created_date IS '가입날짜';
 COMMENT ON COLUMN LOTUSER.login_date IS '최근 로그인날짜';
