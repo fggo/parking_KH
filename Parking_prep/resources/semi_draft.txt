@@ -1,0 +1,203 @@
+테이블 
+[USER]
+CREATE 
+user_code VARCHAR2(20) 
+user_Id VARCHAR2(20)
+user_pw VARCHAR2(20)
+email VARCHAR2(20)
+phone VARCHAR2(20)
+user_name VARCHAR2(20)
+user_addr VARCHAR2(50)
+last_logged DATE
+created_date DATE
+receive_sms CHAR(1) CHECK receive_sms in ('Y','N')
+receive_email  CHAR(1) CHECK receive_sms in ('Y','N') 
+
+아이디/비밀번호 분실
+
+[USER_HISTORY]
+user_code FK
+latitude NUMBER
+longitude NUMBER
+parking_addr VARCHAR2(50)
+parking_name VARCHAR2(50)
+
+[VEHICLE]
+user_code VARCHAR2(20)
+car_capcity INT
+car_type VARCHAR2(20)
+car_model VARCHAR2(20)
+
+[PURCHASE_HISTORY]
+user_code FK
+purchase_date DATE
+parking_name VARCHAR2(50)
+parking_addr VARCHAR2(50)
+purchase_amount NUMBER
+instt_name VARCHAR2(20)
+instt_phone VARCHAR2(20)
+
+[REVIEW]
+user_code VARCAHR2(20) FK
+parking_name VARCHAR2(50)
+parking_addr VARCHAR2(50)
+longitude NUMBER
+latitude NUMBER
+cre_title VARCHAR2(50)
+cre_content VARCHAR2(50)
+created_date DATE
+cre_score INT CHECK score in (1,2,3,4,5)
+
+[QNA_BOARD]
+user_code VARCHAR2(20)
+qna_title VARCHAR2(20)
+qna_content VARCHAR2(50)
+created_date DATE
+index INT
+
+[notice]
+user_code VARCHAR2(20)
+notice_title VARCHAR2(50)
+notice_content VARCAHR2(50)
+created_date DATE
+view_count INT
+
+[USER_BOOKMARK]
+user_code FK VARCHAR2(20)
+parking_name VARHCHAR2(20)
+parking_addr VARHCHAR2(50)
+longitude NUMBER
+latitude NUMBER
+
+[COUPON]
+user_code VARCHAR2(20)
+coupon_code CHAR(16) 
+expired CHAR(1) CHECK expired in('Y', 'N')
+
+
+--- API 1. 서울주차장 (20개 구)---
+링크:
+http://data.seoul.go.kr/dataList/datasetView.do?infId=OA-13122&srvType=S&serviceKind=1&currentPageNo=1
+
+API 요청:
+http://openapi.seoul.go.kr:8088/서비스키/json/GetParkInfo/1/5/지역명
+    여기서 지역명은 LIKE 처럼 검색됨
+    
+배정코드 PIS01: FULL / PIS02: EMPTY
+
+노원구 상계동 739-2
+동대문구 장안동 427-4
+중랑구 상봉동 127-19
+서대문구 남가좌동 84-2
+용산구 이촌동 302-31
+영등포구 신길동 812-0
+서초구 방배동 760-3
+성동구 옥수동 401-1
+강동구 명일동 51-1
+금천구 독산동 303-2
+광진구 구의동 695-0
+마포구 서교동 366-19
+강서구 등촌동 695-0
+관악구 신림동 1675-7
+강남구 율현동 101-10
+동작구 동작동 102-65
+종로구 종로5가 490-0
+송파구 가락동 107-18
+중구 남창동 51-4 0
+강북구 수유동 605-185
+
+--- API 2. 전국주차장(서울데이터는 25개 구) ---
+링크:
+https://www.data.go.kr/dataset/15012896/standard.do
+
+API 요청:
+http://api.data.go.kr/openapi/prkplce-info-std?serviceKey=서비스키&type=json&instt_nm=서울특별시 성동구
+
+3000000	서울특별시 종로구
+3010000	서울특별시 중구
+
+3030000	서울특별시 성동구
+3040000	서울특별시 광진구
+
+3060000	서울특별시 중랑구
+3070000	서울특별시 성북구
+3080000	서울특별시 강북구
+
+3110000	서울특별시 은평구
+
+3140000	서울특별시 양천구
+3150000	서울특별시 강서구
+3160000	서울특별시 구로구
+3170000	서울특별시 금천구
+3180000	서울특별시 영등포구
+3190000	서울특별시 동작구
+3200000	서울특별시 관악구
+3210000	서울특별시 서초구
+3220000	서울특별시 강남구
+3230000	서울특별시 송파구
+3240000	서울특별시 강동구
+
+B553774	서울시설공단(노원구 도봉구 동대문구 마포구 서대문구 용산구 [위에 없는주소] +
+                  강남구 강동구 강북구 강서구 관악구 광진구 구로구 금천구 동작구 서초구 성동구 
+                  송파구 양천구 영등포구 은평구 종로구 중구)
+B553766	서울교통공사 (서초구 성동구)
+B552067	서울특별시중구시설관리공단 (중구)
+B551897	서울특별시성동구도시관리공단 (성동구)
+B551282	강북구도시관리공단 (강북구)
+
+
+
+
+
+
+
+--------------------------------------------------
+[어플리케이션 흐름 초안 19.07.16]
+
+어플리케이션 이름: ??? 미정.
+
+1. 어플리케이션 시작 -> 
+    gps 기능 유: 현재위치 자동 검색 -> AA구 BB동 추출
+    gps 기능 무: 사용자가 현재주소 또는 위도경도 또는 주변에 유명한 건물/랜드마크 직접 입력 -> AA구 BB동 추출
+
+2. 주차장현황 OpenApi 사용하여 주차장 현황 데이터 추출(한번 호출시 최대 5개 데이터)
+		http://openapi.seoul.go.kr:8088/api인증키/json또는xml/GetParkInfo/1/5/AA
+		http://openapi.seoul.go.kr:8088/api인증키/json또는xml/GetParkInfo/1/5/BB
+
+		- 추출 List 개수 # = 5
+
+		Parking [PARKING_CODE=?, PARKING_NAME=?, ADDR=용산구 이촌동 302-31, ..., CAPACITY=23, CUR_PARKING=0, ... 
+			     LAT":37.52045377,"LNG":126.96722883,"ASSIGN_CODE":"PIS02","ASSIGN_CODE_NM":"미배정,미점유]
+			...
+		Parking [PARKING_CODE=?, PARKING_NAME=?, ADDR=용산구 이촌동 302-31, ..., CAPACITY=23, CUR_PARKING=0, ... 
+			     LAT":37.52045377,"LNG":126.96722883,"ASSIGN_CODE":"PIS02","ASSIGN_CODE_NM":"미배정,미점유]
+	
+	[문제점 1] 예를들어 주차장 수용 차량 수가 32개인 경우, 같은 주차장의 32개의 데이터(행)가 존재하므로, 
+			   api 1회 사용시 최대 5개 데이터 추출하므로, 같은 주차장만 5개 나오게 되는 경우 다수 발생!
+	[해결책] http://openapi.seoul.go.kr:8088/api인증키/json또는xml/GetParkInfo/1/5/BB
+			여기서 시작(start)과 끝(end) 인덱스를 랜덤으로 배정하여, api 호출을 여러번 시행하여,
+			서로 다른 주차장 데이터가 충분히 나오도록(예를 들어 5개 이상) 반복문을 사용하는 java code 로직을 구현.
+			[여기서 문제점] api 호출 횟수에 제한이 있으므로, 정확히 호출 횟수 제한횟수 파악.
+
+3. 추출한 각 주차장 정보에서 주소(ADDR)/위도(LAT)/경도(LNG) 추출 가능
+
+4. 지도상에 추출한 주차장 위치를 마킹(marking)해서 시각적으로 보여주기
+
+5. 왼쪽 사이드 바에, 각 주차장 마킹된 위치를 리스트로 보여주기(네이버나 다음 맵 처럼)
+
+6. 마킹을 클릭하면 최단경로가 시각적으로 보여짐
+
+7. SKT T맵 사용자의 경우 link를 누르면 skt validation을 하고, 모바일로 navigation 연동되도록 구현
+
+8. 리뷰기능 (댓글 + 5 stars rating)
+
+9. 결제 시스템
+  - 신용카드/계좌이체 기능
+  - 광고 배너 없애기 ($0.99)
+
+10. front-end 디자인 bootstrap 이용
+  직접 하나하나 html css 코딩 X. 사이트 copy해서 필요한 부분만 
+	- Google "bootstrap template"
+	- https://getbootstrap.com/docs/4.3/examples/
+
+
