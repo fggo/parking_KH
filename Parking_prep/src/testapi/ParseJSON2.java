@@ -25,12 +25,17 @@ public class ParseJSON2 {
   }
 
   public static void main(String[] args) {
+    try {
+      prop.load(new FileReader("resources/config.properties"));
+    } catch(IOException e) {
+      e.printStackTrace();
+    }
 
     String ckanResceId = "prkplce-info-std";
     String serviceKey2 = prop.getProperty("serviceKey2");
 //    String instt_nm = "서울특별시"+ "%20" +"강남구";
-//    String instt_nm = "서울특별시성동구도시관리공단";
-    String instt_nm = "송파구시설관리공단";
+    String instt_nm = "서울특별시성동구도시관리공단";
+//    String instt_nm = "송파구시설관리공단";
 
 //    KOR -> UTF-8 변환
 //    byte[] byteArr = instt_nm.getBytes(StandardCharsets.UTF_8);
